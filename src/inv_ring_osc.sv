@@ -25,7 +25,7 @@ endmodule
 /*
  * The following code creates a ring oscillator with 251 inverter stages,
  * which is expected to generate an oscillation signal of approximately 50 MHz
- * on the Skywalker 130 nm process.
+ * on the Skywater 130 nm process.
  */
 
 module inv_ring_osc
