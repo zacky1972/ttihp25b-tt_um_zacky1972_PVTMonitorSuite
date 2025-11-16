@@ -59,7 +59,7 @@ module inv_ring_osc
     );
 
     // loop back
-    assign inv_in[0] = ena ? inv_out[DEPTH*2] : 1'b0;
+    assign inv_in[0] = ~(ena & inv_out[DEPTH*2]);
 
     assign osc_out = inv_in[0];
 endmodule
