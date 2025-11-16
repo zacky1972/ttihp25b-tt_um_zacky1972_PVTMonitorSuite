@@ -40,22 +40,29 @@ module tt_um_zacky1972_PVTMonitorSuite
 );
 
   // Use the ring oscillator
-  inv_ring_osc dut (
+  inv_ring_osc dut1
+  (
     .ena(ui_in[0]),
     .osc_out(uo_out[0])
   );
 
-  dummy dut2 (
+  nand2_ring_osc dut2
+  (
+    .ena(ui_in[0]),
+    .osc_out(uo_out[1])
+  );
+
+  dummy dut_d (
     .in1(ui_in),
     .in2(uio_in),
-    .out(uo_out[1]),
+    .out(uo_out[7]),
     .ena(ena),
     .clk(clk),
     .rst_n(rst_n)
   );
 
   // Unused outputs must be tied
-  assign uo_out[7:2] = 6'b0;
+  assign uo_out[6:2] = 5'b0;
   assign uio_out     = 8'b0;
   assign uio_oe      = 8'b0;
 
@@ -63,4 +70,3 @@ module tt_um_zacky1972_PVTMonitorSuite
   logic _unused;
 
 endmodule
-

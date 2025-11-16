@@ -19,12 +19,13 @@ project:
   source_files:
     - "project.sv"
     - "inv_ring_osc.sv"
+    - "nand2_ring_osc.sv"
 
 # The pinout of your project. Leave unused pins blank. DO NOT delete or add any pins.
 # This section is for the datasheet/website. Use descriptive names (e.g., RX, TX, MOSI, SCL, SEG_A, etc.).
 pinout:
   # Inputs
-  ui[0]: "enable_inv_ring_osc"
+  ui[0]: "enable_ring_osc"
   ui[1]: ""
   ui[2]: ""
   ui[3]: ""
@@ -35,7 +36,7 @@ pinout:
 
   # Outputs
   uo[0]: "inv_ring_osc_signal"
-  uo[1]: ""
+  uo[1]: "nand2_ring_osc_signal"
   uo[2]: ""
   uo[3]: ""
   uo[4]: ""
