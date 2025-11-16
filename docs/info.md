@@ -20,6 +20,8 @@ The suite supports the following measurements:
 
 High-speed counters driven by the ring oscillators convert these delays into digital values, enabling precise evaluation of process, voltage, and temperature variations on a fully digital, open-access platform.
 
+To meet TinyTapeout’s requirements, no standard cells from the Skywater 130 nm process are used, and the design passes all strict error and warning checks.
+
 ## How to test
 
 Explain how to use your project
