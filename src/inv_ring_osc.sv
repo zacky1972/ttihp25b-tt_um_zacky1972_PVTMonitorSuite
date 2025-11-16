@@ -33,6 +33,7 @@ module inv_ring_osc
     // The DEPTH value is set to 125, giving 125 * 2 + 1 = 251 stages.
     parameter DEPTH = 125
 )(
+    input  logic ena,
     output logic osc_out
 );
 
@@ -58,7 +59,7 @@ module inv_ring_osc
     );
 
     // loop back
-    assign inv_in[0] = inv_out[DEPTH*2];
+    assign inv_in[0] = ena ? inv_out[DEPTH*2] : 1'b0;
 
     assign osc_out = inv_in[0];
 endmodule

@@ -41,6 +41,7 @@ module tt_um_zacky1972_PVTMonitorSuite
 
   // Use the ring oscillator
   inv_ring_osc dut (
+    .ena(ui_in[0]),
     .osc_out(uo_out[0])
   );
 
