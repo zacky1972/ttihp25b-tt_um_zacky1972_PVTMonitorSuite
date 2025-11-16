@@ -5,27 +5,6 @@
 
 `default_nettype none
 
-module dummy
-(
-    input  logic [7:0] in1,
-    input  logic [7:0] in2,
-    output logic out,
-    input  ena,
-    input  clk,
-    input  rst_n
-);
-  logic next_out;
-
-  always_ff @(posedge clk, negedge rst_n)
-    if (~ rst_n)
-      out <= 0;
-    else
-      out <= next_out;
-
-  assign next_out = &{in1, in2, ena};
-
-endmodule
-
 module tt_um_zacky1972_PVTMonitorSuite
 (
     input  logic [7:0] ui_in,    // Dedicated inputs
@@ -52,21 +31,19 @@ module tt_um_zacky1972_PVTMonitorSuite
     .osc_out(uo_out[1])
   );
 
-  dummy dut_d (
-    .in1(ui_in),
-    .in2(uio_in),
-    .out(uo_out[7]),
-    .ena(ena),
-    .clk(clk),
-    .rst_n(rst_n)
+  t_clkq_setup_measure dut3
+  (
+    .clk(ui_in[1]),
+    .rst_n(ui_in[2]),
+    .d(ui_in[3]),
+    .measured_cnt(uio_out)
   );
 
   // Unused outputs must be tied
   assign uo_out[6:2] = 5'b0;
-  assign uio_out     = 8'b0;
-  assign uio_oe      = 8'b0;
+  assign uio_oe      = 8'b1111_1111;
 
   // List all unused inputs to prevent warnings
-  logic _unused;
+  assign uo_out[7] = &(ui_in[7:4]);
 
 endmodule
