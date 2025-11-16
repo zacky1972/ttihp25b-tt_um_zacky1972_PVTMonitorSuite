@@ -5,6 +5,12 @@
 
 `default_nettype none
 
+/*
+ * The following code implements an inverter. 
+ * Warnings about circular combinational logic are suppressed,
+ * as it is intended for use in a ring oscillator.
+ */ 
+
 module inverter
 (
     input logic a,
@@ -16,8 +22,15 @@ module inverter
 
 endmodule
 
+/*
+ * The following code creates a ring oscillator with 251 inverter stages,
+ * which is expected to generate an oscillation signal of approximately 50 MHz
+ * on the Skywalker 130 nm process.
+ */
+
 module inv_ring_osc
 #(
+    // The DEPTH value is set to 125, giving 125 * 2 + 1 = 251 stages.
     parameter DEPTH = 125
 )(
     output logic osc_out
